@@ -33,8 +33,44 @@ class Pawn(Piece):
     """
     A class representing a chess pawn.
     """
+    target_square = 0
+    target_square_2 = 0
     def get_available_moves(self, board) -> List[Square]:
-        return []
+        global target_square, target_square_2
+        current_square = board.find_piece(self)
+        if current_square == Square.at(1, 0) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 1) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 2) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 3) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 4) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 5) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        if current_square == Square.at(1, 6) and self.player == Player.WHITE:
+            target_square = Square.at(current_square.row+2,current_square.col)
+        elif self.player == Player.WHITE:
+            target_square_2 = Square.at(current_square.row+1,current_square.col)
+        if current_square == Square.at(6, 0) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 1) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 2) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 3) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 4) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 5) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        if current_square == Square.at(6, 6) and self.player == Player.BLACK:
+            target_square = Square.at(current_square.row-2,current_square.col)
+        elif self.player == Player.BLACK:
+            target_square_2 = Square.at(current_square.row-1,current_square.col)
+        return [target_square, target_square_2]
 
 
 class Knight(Piece):
